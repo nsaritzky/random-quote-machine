@@ -71,33 +71,38 @@ function App() {
         setIndex(index + 1);
     }
 
-    return (
-        <div className="QuoteMachine container">
-            <div className="card w-50 position-absolute start-50 top-50 translate-middle shadow-sm bg-white m-auto" id='quote-box'>
-                <div className="card-body">
-                    <figure>
-                        <blockquote className="card-text blockquote" id="text">
-                            {quote.text}
-                        </blockquote>
-                        {quote.author && <figcaption className="blockquote-footer text-end" id="author">
-                            {quote.author}
-                        </figcaption>}
-                    </figure>
-                    <div className="row">
-                        <div className="col-3">
-                            <a href={makeTweetLink(quote).toString()} id="tweet-quote">
-                                <button className="btn btn-light">
-                                    <i className="fa-brands fa-twitter" />
-                                </button>
-                            </a>
-                        </div>
-                        <div className="col-6" />
-                        <div className="col-3">
-                            <button className="btn btn-primary" id="new-quote" onClick={handleNewQuote}>New Quote</button>
-                        </div>
+    const quoteMachineCard = (
+        <div className="card w-50 position-absolute start-50 top-50 translate-middle shadow-sm bg-white m-auto" id='quote-box'>
+            <div className="card-body">
+                <figure>
+                    <blockquote className="card-text blockquote" id="text">
+                        {quote.text}
+                    </blockquote>
+                    {quote.author && <figcaption className="blockquote-footer text-end" id="author">
+                        {quote.author}
+                    </figcaption>}
+                </figure>
+                <div className="row">
+                    <div className="col-3">
+                        <a href={makeTweetLink(quote).toString()} id="tweet-quote">
+                            <button className="btn btn-light">
+                                <i className="fa-brands fa-twitter" />
+                            </button>
+                        </a>
+                    </div>
+                    <div className="col-6" />
+                    <div className="col-3">
+                        <button className="btn btn-primary" id="new-quote" onClick={handleNewQuote}>New Quote</button>
                     </div>
                 </div>
             </div>
+        </div>
+    )
+
+
+    return (
+        <div className="QuoteMachine container">
+            {quote && quoteMachineCard}
         </div>
     );
 }
